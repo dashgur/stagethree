@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage Three Consulting — IT Project, Product & Process Consulting</title>
+<meta name="description" content="Stage Three Consulting — project, product and process consulting for IT teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10131A;
+    --paper:#F5F6F8;
+    --blue-deep:#1F3A5F;
+    --blue:#3E5E82;
+    --blue-light:#7C93AD;
+    --grey:#667085;
+    --line:#DFE2E7;
+    --line-dark:rgba(245,246,248,0.14);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.mono-label{
+    font-family:'Space Grotesk',sans-serif;
+  }
+
+  a{color:inherit;}
+
+  :focus-visible{
+    outline:2px solid var(--blue-deep);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,246,248,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .mark{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .mark-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    height:22px;
+  }
+  .mark-bars span{
+    display:block;
+    width:6px;
+    background:var(--blue-light);
+    border-radius:1px;
+  }
+  .mark-bars span:nth-child(1){height:8px;}
+  .mark-bars span:nth-child(2){height:15px; background:var(--blue);}
+  .mark-bars span:nth-child(3){height:22px;background:var(--blue-deep);}
+  .mark-word{
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:0.01em;
+  }
+  .mark-word b{font-weight:700;}
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:36px;
+  }
+  nav ul a{
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    letter-spacing:0.01em;
+    position:relative;
+    padding-bottom:2px;
+  }
+  nav ul a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-4px;
+    width:0%;
+    height:1px;
+    background:var(--blue-deep);
+    transition:width 0.25s ease;
+  }
+  nav ul a:hover::after{width:100%;}
+
+  .nav-cta{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--paper);
+    background:var(--blue-deep);
+    padding:9px 18px;
+    border-radius:3px;
+    transition:background 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--ink);}
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:110px 0 96px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+    max-width:720px;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;
+    height:1px;
+    background:var(--blue-light);
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 3.8vw, 2.9rem);
+    line-height:1.18;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    max-width:18ch;
+  }
+  .hero .sub{
+    font-size:17.5px;
+    color:#333844;
+    max-width:56ch;
+    line-height:1.65;
+  }
+  .hero-cta-row{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    padding-top:10px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-block;
+    text-decoration:none;
+    background:var(--blue-deep);
+    color:var(--paper);
+    font-weight:600;
+    font-size:15px;
+    padding:14px 26px;
+    border-radius:3px;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover{background:var(--ink); transform:translateY(-1px);}
+  .btn-ghost{
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{
+    padding:84px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{
+    font-size:clamp(1.5rem, 2.6vw, 2rem);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.25;
+  }
+  .section-head p{
+    margin-top:14px;
+    font-size:16px;
+    color:var(--grey);
+    max-width:56ch;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-simple p{
+    font-size:17px;
+    color:#262b33;
+    max-width:60ch;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .service-card{
+    background:var(--paper);
+    padding:30px 28px;
+    transition:background 0.2s ease;
+  }
+  .service-card:hover{background:#fff;}
+  .service-card .idx{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    color:var(--blue-light);
+    letter-spacing:0.06em;
+  }
+  .service-card h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin:14px 0 10px;
+    line-height:1.35;
+  }
+  .service-card p{
+    font-size:14.5px;
+    color:var(--grey);
+    line-height:1.6;
+  }
+  @media (max-width:900px){
+    .services-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- APPROACH ---------- */
+  .approach-dark{
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:none;
+  }
+  .approach-dark .section-head p{color:#a9b0bc;}
+  .approach-dark .eyebrow{color:var(--blue-light);}
+  .approach-dark .eyebrow::before{background:var(--blue-light);}
+
+  .stages{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+  }
+  .stage{
+    padding:0 32px 0 0;
+    border-left:1px solid var(--line-dark);
+    padding-left:32px;
+  }
+  .stage:first-child{border-left:none; padding-left:0;}
+  .stage .stagenum{
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    height:26px;
+    margin-bottom:22px;
+  }
+  .stage .stagenum span{
+    display:block;
+    width:7px;
+    background:#3a4250;
+    border-radius:1px;
+  }
+  .stage[data-n="1"] .stagenum span:nth-child(1){height:10px; background:var(--blue-light);}
+  .stage[data-n="1"] .stagenum span:nth-child(2),
+  .stage[data-n="1"] .stagenum span:nth-child(3){opacity:0.4;}
+  .stage[data-n="2"] .stagenum span:nth-child(1),
+  .stage[data-n="2"] .stagenum span:nth-child(2){height:10px; background:var(--blue-light);}
+  .stage[data-n="2"] .stagenum span:nth-child(2){height:18px;}
+  .stage[data-n="2"] .stagenum span:nth-child(3){opacity:0.4;}
+  .stage[data-n="3"] .stagenum span:nth-child(1){height:10px;}
+  .stage[data-n="3"] .stagenum span:nth-child(2){height:18px;}
+  .stage[data-n="3"] .stagenum span:nth-child(3){height:26px;}
+  .stage[data-n="3"] .stagenum span{background:var(--blue-light);}
+
+  .stage .stagelabel{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#8a8f99;
+    margin-bottom:8px;
+  }
+  .stage h3{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:12px;
+  }
+  .stage p{
+    font-size:14.5px;
+    color:#c4c7cd;
+    line-height:1.7;
+    max-width:34ch;
+  }
+  @media (max-width:820px){
+    .stages{grid-template-columns:1fr; gap:36px;}
+    .stage{border-left:none; padding-left:0;}
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .contact-copy h2{
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+    font-weight:600;
+    line-height:1.25;
+    letter-spacing:-0.01em;
+    max-width:18ch;
+  }
+  .contact-copy p{
+    margin-top:16px;
+    color:var(--grey);
+    font-size:16px;
+    max-width:44ch;
+  }
+  .contact-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:34px 32px;
+  }
+  .contact-card .row{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-card .row:last-child{border-bottom:none; padding-bottom:0;}
+  .contact-card .row:first-child{padding-top:0;}
+  .contact-card .k{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .contact-card .v{
+    font-size:16px;
+    font-weight:500;
+  }
+  .contact-card .v a{
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .contact-card .v a:hover{border-color:var(--ink);}
+
+  @media (max-width:820px){
+    .contact-wrap{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:32px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--grey);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="mark">
+      <span class="mark-bars"><span></span><span></span><span></span></span>
+      <span class="mark-word">STAGE <b>THREE</b></span>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">IT Project, Product &amp; Process Consulting</p>
+      <h1>Delivery and process consulting for IT teams that need both.</h1>
+      <p class="sub">Stage Three Consulting covers project and product management, plus the process and IT business partnering work that makes it stick.</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-primary">Get in touch</a>
+        <a href="#services" class="btn-ghost">View services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Delivery and process, under one roof.</h2>
+      </div>
+      <div class="about-simple">
+        <p>Stage Three Consulting works across project and product delivery, and the process and business-partnering work that makes it last. Engagements are scoped to what's useful — one workstream, or the whole thing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2>What we do.</h2>
+        <p>Most engagements draw on a mix of these. We're happy to take on one workstream or the whole thing.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="idx">01</span>
+          <h3>Project &amp; Programme Delivery</h3>
+          <p>Running projects, programmes and PMOs end to end — planning, governance, supplier management, and keeping delivery realistic against what's actually achievable.</p>
+        </div>
+        <div class="service-card">
+          <span class="idx">02</span>
+          <h3>Digital Leadership &amp; Transformation</h3>
+          <p>Leading digital transformation and change programmes, including the stakeholder work needed to get technology-led change to actually stick.</p>
+        </div>
+        <div class="service-card">
+          <span class="idx">03</span>
+          <h3>Product Strategy &amp; Innovation</h3>
+          <p>Turning business priorities into a roadmap, and helping teams work through new ideas and emerging technology worth exploring.</p>
+        </div>
+        <div class="service-card">
+          <span class="idx">04</span>
+          <h3>IT Business Partnering</h3>
+          <p>An embedded point of contact between IT and the business, so decisions on both sides get made with the full picture.</p>
+        </div>
+        <div class="service-card">
+          <span class="idx">05</span>
+          <h3>Operating Model &amp; Process Design</h3>
+          <p>Reworking how IT and the business work together — decision-making, governance, and processes that hold up after we've left.</p>
+        </div>
+        <div class="service-card">
+          <span class="idx">06</span>
+          <h3>AI &amp; Emerging Technology</h3>
+          <p>Practical advice on where AI and new technology genuinely fit — and where they don't — grounded in what's realistic for your organisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="approach-dark">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Approach</p>
+        <h2>How we work.</h2>
+        <p>Roughly the same shape on every engagement, scaled up or down depending on scope.</p>
+      </div>
+      <div class="stages">
+        <div class="stage" data-n="1">
+          <div class="stagenum"><span></span><span></span><span></span></div>
+          <div class="stagelabel">Stage One</div>
+          <h3>Understand</h3>
+          <p>We spend time with the people involved before proposing anything — what's already been tried, what the real constraints are.</p>
+        </div>
+        <div class="stage" data-n="2">
+          <div class="stagenum"><span></span><span></span><span></span></div>
+          <div class="stagelabel">Stage Two</div>
+          <h3>Structure</h3>
+          <p>We put a delivery plan in place — governance, roadmap, and a working rhythm the team can actually sustain.</p>
+        </div>
+        <div class="stage" data-n="3">
+          <div class="stagenum"><span></span><span></span><span></span></div>
+          <div class="stagelabel">Stage Three</div>
+          <h3>Embed</h3>
+          <p>We stay until the work holds up without us. It's also where the name comes from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-wrap">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2>Get in touch.</h2>
+          <p>Email us with a bit of context on what you're working on, and we'll get back to you within a couple of days.</p>
+        </div>
+        <div class="contact-card">
+          <div class="row">
+            <span class="k">Email</span>
+            <span class="v"><a href="mailto:info@stagethree.consulting">info@stagethree.consulting</a></span>
+          </div>
+          <div class="row">
+            <span class="k">Based</span>
+            <span class="v">London, United Kingdom</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> Stage Three Consulting</span>
+    <span><a href="mailto:info@stagethree.consulting" style="text-decoration:none;">info@stagethree.consulting</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
